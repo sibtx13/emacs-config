@@ -1,10 +1,11 @@
-
-;; c indentation
-(setq indent-tabs-mode nil)
-(setq-default c-basic-offset 4)
-
-;;to display time
+;; displays the time in the status bar
 (display-time)
+
+;; do not make backup files
+(setq make-backup-files nil)
+
+;; Goto-line short-cut key
+(global-set-key "\C-l" 'goto-line)
 
 ;;set the keybinding so that f3 will start the shell
 (global-set-key [f3] 'shell)
@@ -12,9 +13,27 @@
 ;; use hippie expand
 (global-set-key "\M-/" 'hippie-expand-case-sensitive)
 
-;; Goto-line short-cut key                                                                                                   
-(global-set-key "\C-l" 'goto-line)
+;; org-mode! for note taking and task completion
+(require 'org-install)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
 
-;; Show line and column number
-(line-number-mode 1)
-(column-number-mode 1)
+;; set default ccmode indent to 4
+(setq c-default-style "bsd"
+      c-basic-offset 4)
+
+;; change indents from tabs to spaces
+(setq c-mode-hook
+    (function (lambda ()
+                (setq indent-tabs-mode nil)
+                (setq c-indent-level 4))))
+(setq objc-mode-hook
+    (function (lambda ()
+                (setq indent-tabs-mode nil)
+                (setq c-indent-level 4))))
+(setq c++-mode-hook
+    (function (lambda ()
+                (setq indent-tabs-mode nil)
+                (setq c-indent-level 4))))
