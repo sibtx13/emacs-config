@@ -37,3 +37,8 @@
     (function (lambda ()
                 (setq indent-tabs-mode nil)
                 (setq c-indent-level 4))))
+
+;; python mode
+(add-to-list 'load-path ".emacs.d/python-mode/") 
+(setq py-install-directory ".emacs.d/python-mode/")
+(require 'python-mode)
