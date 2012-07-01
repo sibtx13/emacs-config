@@ -13,12 +13,6 @@
 ;; use hippie expand
 (global-set-key "\M-/" 'hippie-expand-case-sensitive)
 
-;; org-mode! for note taking and task completion
-(require 'org-install)
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
-(setq org-log-done t)
 
 ;; set default ccmode indent to 4
 (setq c-default-style "bsd"
@@ -38,7 +32,22 @@
                 (setq indent-tabs-mode nil)
                 (setq c-indent-level 4))))
 
+;; indents the whole file
+(defun indent-all ()
+  "indent whole buffer"
+  (interactive)
+  (delete-trailing-whitespace)
+  (indent-region (point-min) (point-max) nil)
+  (untabify (point-min) (point-max)))
+
 ;; python mode
 (add-to-list 'load-path ".emacs.d/python-mode/") 
 (setq py-install-directory ".emacs.d/python-mode/")
 (require 'python-mode)
+
+;; org-mode! for note taking and task completion
+(require 'org-install)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
