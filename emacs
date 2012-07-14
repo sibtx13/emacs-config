@@ -11,8 +11,8 @@
 (global-set-key [f3] 'shell)
 
 ;; use hippie expand
-(global-set-key "\M-/" 'hippie-expand-case-sensitive)
-
+;;(global-set-key "\M-/" 'hippie-expand-case-sensitive)
+(global-set-key "\C-x\C-x" 'hippie-expand)
 
 ;; set default ccmode indent to 4
 (setq c-default-style "bsd"
